@@ -45,13 +45,6 @@ class TransactionsRepository {
   }
 
   public create({ title, value, type }: CreateTransaction): Transaction {
-    const balance = this.getBalance();
-    if (type === 'outcome') {
-      if (balance.total < value) {
-        throw Error('This');
-      }
-    }
-
     const transaction = new Transaction({ title, value, type });
     this.transactions.push(transaction);
     return transaction;
